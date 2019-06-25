@@ -2,7 +2,14 @@ import React from "react";
 import { API, graphqlOperation } from "aws-amplify";
 import { createMarket } from "../graphql/mutations";
 // prettier-ignore
-import { Form, Button, Dialog, Input, Select, Notification } from 'element-react'
+import {
+  Form,
+  Button,
+  Dialog,
+  Input,
+  Select,
+  Notification
+} from 'element-react'
 
 import { UserContext } from "../App";
 
@@ -17,18 +24,27 @@ class NewMarket extends React.Component {
 
   handleAddMarket = async user => {
     try {
-      this.setState({ addMarketDialog: false });
+      this.setState({
+        addMarketDialog: false
+      });
       const input = {
         name: this.state.name,
         tags: this.state.selectedTags,
         owner: user.username
       };
       const result = await API.graphql(
-        graphqlOperation(createMarket, { input })
+        graphqlOperation(createMarket, {
+          input
+        })
       );
-      console.log({ result });
+      console.log({
+        result
+      });
       console.info(`Created Market: id ${result.data.createMarket.id}`);
-      this.setState({ name: "", selectedTags: [] });
+      this.setState({
+        name: "",
+        selectedTags: []
+      });
     } catch (err) {
       console.error("Error adding new market", err);
       Notification.error({
@@ -40,9 +56,14 @@ class NewMarket extends React.Component {
 
   handleFilterTags = query => {
     const options = this.state.tags
-      .map(tag => ({ value: tag, label: tag }))
+      .map(tag => ({
+        value: tag,
+        label: tag
+      }))
       .filter(tag => tag.label.toLowerCase().includes(query.toLowerCase()));
-    this.setState({ options });
+    this.setState({
+      options
+    });
   };
 
   render() {
@@ -52,17 +73,18 @@ class NewMarket extends React.Component {
           <>
             <div className="market-header">
               <h1 className="market-title">
-                Create Your MarketPlace
+                Cottage Foods
                 <Button
                   type="text"
                   icon="edit"
                   className="market-title-button"
                   onClick={() => {
-                    this.setState({ addMarketDialog: true });
+                    this.setState({
+                      addMarketDialog: true
+                    });
                   }}
                 />
               </h1>
-
               <Form inline={true} onSubmit={this.props.handleSearch}>
                 <Form.Item>
                   <Input
@@ -85,11 +107,14 @@ class NewMarket extends React.Component {
                 </Form.Item>
               </Form>
             </div>
-
             <Dialog
               title="Create New Market"
               visible={this.state.addMarketDialog}
-              onCancel={() => this.setState({ addMarketDialog: false })}
+              onCancel={() =>
+                this.setState({
+                  addMarketDialog: false
+                })
+              }
               size="large"
               customClass="dialog"
             >
@@ -99,7 +124,11 @@ class NewMarket extends React.Component {
                     <Input
                       placeholder="Market Name"
                       trim={true}
-                      onChange={name => this.setState({ name })}
+                      onChange={name =>
+                        this.setState({
+                          name
+                        })
+                      }
                       value={this.state.name}
                     />
                   </Form.Item>
@@ -108,7 +137,11 @@ class NewMarket extends React.Component {
                       multiple={true}
                       filterable={true}
                       placeholder="Market Tags"
-                      onChange={selectedTags => this.setState({ selectedTags })}
+                      onChange={selectedTags =>
+                        this.setState({
+                          selectedTags
+                        })
+                      }
                       remoteMethod={this.handleFilterTags}
                       value={this.state.selectedTags}
                       remote={true}
@@ -126,7 +159,11 @@ class NewMarket extends React.Component {
               </Dialog.Body>
               <Dialog.Footer>
                 <Button
-                  onClick={() => this.setState({ addMarketDialog: false })}
+                  onClick={() =>
+                    this.setState({
+                      addMarketDialog: false
+                    })
+                  }
                 >
                   Cancel
                 </Button>

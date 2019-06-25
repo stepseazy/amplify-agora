@@ -156,13 +156,13 @@ body {
   text-decoration: none;
 }
 
-.profile-tabs > * {
+.profile-tabs>* {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.delete-profile > * {
+.delete-profile>* {
   background: rgba(255, 0, 0, 0.2);
 }
 
@@ -200,7 +200,6 @@ body {
   border-radius: 10px;
   text-decoration: #f90 solid underline;
   text-underline-position: under;
-  text-decoration-style: wavy;
   font-size: 2.5rem;
   display: flex;
   color: var(--lightSquidInk);
@@ -223,6 +222,7 @@ body {
   .market-title {
     font-size: 2.1rem;
   }
+
   .market-title-button {
     font-size: 25px !important;
   }
@@ -232,6 +232,7 @@ body {
   .market-title {
     font-size: 1.8rem;
   }
+
   .market-title-button {
     font-size: 25px !important;
   }
@@ -241,6 +242,7 @@ body {
   .market-title {
     font-size: 1.6rem;
   }
+
   .market-title-button {
     font-size: 20px !important;
   }
@@ -250,6 +252,7 @@ body {
   .market-title {
     font-size: 1.5rem;
   }
+
   .market-title-button {
     font-size: 15px !important;
   }

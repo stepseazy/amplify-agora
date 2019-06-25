@@ -73,10 +73,8 @@ class HomePage extends React.Component {
           handleSearchChange={this.handleSearchChange}
           handleClearSearch={this.handleClearSearch}
           handleSearch={this.handleSearch}
-        >
-          {" "}
-        </NewMarket>{" "}
-        <MarketList searchResults={this.state.searchResults}> </MarketList>{" "}
+        />
+        <MarketList searchResults={this.state.searchResults}> </MarketList>
       </>
     );
   }
